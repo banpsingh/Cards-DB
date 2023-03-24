@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container rounded py-2 px-4  mb-2 mt-5 border border-success" 
+       style="background-color:#E7F3E7"> 
+    <div class="text-center">
+      <h1 class="display-5">Upload Deck</h1>
+    </div>
+    <form class="form" method="post" enctype="multipart/form-data">
+      <div class="row pt-2 mb-3"> 
+        <div class="col">
+          <div class="form-group">
+            <label class="form-label" for="deck_name">Name of Deck</label>
+            <input class="form-control" type="text" name="deck_name" 
+                   id="deck_name" required>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group" >
+            <label class="form-label" for="year_released">Year Released</label>
+            <input class="form-control" type="number" min="1901" max="2155" 
+                   name="year_released" id="year_released" required>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+          <div class="col">
+            <div class="form-group">
+              <label class="form-label" for="designer">Designer</label>
+              <input class="form-control" type="text" name="designer" 
+                     id="designer" required>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label class="form-label" for="manufacturer_list">Manufacturer</label>
+              <select class="form-select" required name="manufacturer_list" 
+                      id="manufacturer_list" onchange='CheckManufacturer(this.value);'>
+                <option selected disabled value=''>Select Manufacturer</option>
+                <option value="Cartamundi">Cartamundi</option>
+                <option value="LPCC">LPCC</option>
+                <option value="KSPCC">KSPCC</option>
+                <option value="EPCC">EPCC</option>
+                <option value="USPCC">USPCC</option>
+                <option value="TWPCC">TWPCC</option>
+                <option value="WJPC">WJPC</option>
+                <option value="NPCC">NPCC</option>
+                <option value="Unkown">Unknown</option>
+                <option value="other">Other</option>
+              </select>
+              <input class="form-control mt-2" type="text" name="manufacturer" 
+                     id="manufacturer" style='display:none;' />
+            </div>
+          </div>
+        
+      </div> 
+      
+
+      <div class="form-group mb-3">
+        <label class="form-label" for="deck_image">Deck Image</label> 
+        <input class="form-control" type="file" accept=".jpg,.jpeg,.png" 
+               name="deck_image" id="deck_image" required>
+      </div>
+
+
+      <div class="text-center">
+        <button 
+        class="btn btn-primary" 
+        type="submit" 
+        value="Upload">Upload
+      </button>
+      </div>
+      
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <h5 class="text-center mt-2">{{ message }}</h5>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}
+
+  

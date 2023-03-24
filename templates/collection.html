@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+  <input type="text" id="myInput" onkeyup="search()" 
+         placeholder="Search for deck..">
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle mb-2" type="button" 
+            data-bs-toggle="dropdown" aria-expanded="false">
+      Sort By
+    </button>
+    <ul class="dropdown-menu">
+      <li><button class="dropdown-item" type="button" onclick="sortTable(1, true)">
+                  Alphabetically: A-Z</button></li>
+      <li><button class="dropdown-item" type="button" onclick="sortTable(1, false)">
+                  Alphabetically: Z-A</button></li>
+      <li><button class="dropdown-item" type="button" onclick="sortTable(2, true)">
+                  Designer</button></li>
+      <li><button class="dropdown-item" type="button" onclick="sortTable(4, true)">
+                  Year Relased: Old to New</button></li>
+      <li><button class="dropdown-item" type="button" onclick="sortTable(4, false)">
+                  Year Relased: New to Old</button></li>
+    </ul>
+  </div>
+  <table id="myTable" class="table table-bordered border-dark"> 
+    <thead>
+      <tr>
+        <th style="width:20%">Image</th>
+        <th>Deck</th>
+        <th>Designer</th>
+        <th>Manufacturer</th>
+        <th>Year Released</th>
+        <th>Modify</th>
+      </tr>
+    </thead>
+    <tbody>
+  {% for row in rows %}
+      <tr>
+        <td> <img src="{{url_for('static', filename=row[6])}}" 
+          style="max-height:100%; max-width:100%"> </td>
+        <td> {{row[1]}}</td> 
+        <td> {{row[2]}}</td>
+        <td> {{row[3]}}</td>
+        <td> {{row[4]}}</td>
+        <td> 
+          <a href="{{url_for('update_deck', deck_id=row[0])}}">
+            <button class="btn btn-primary"> 
+              <i class="bi bi-pen" style="color:white"></i></button></a>
+          <a href="{{url_for('delete_deck', deck_id=row[0])}}" 
+            onclick="return confirm('Are you sure you want to delete this item?');">
+            <button class="btn btn-danger" ><i class="bi bi-trash3-fill" 
+                    style="color:white"></i></button></a>
+          
+      
+        </td>
+      </tr>
+  {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+
+{% endblock %}

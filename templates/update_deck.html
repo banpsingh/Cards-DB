@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container rounded py-2 px-4  mb-2 mt-5 border border-success" 
+style="background-color:#E7F3E7"> 
+<div class="text-center">
+<h1 class="display-5">Update Deck</h1>
+</div>
+<form class="form" method="post" enctype="multipart/form-data">
+<div class="row pt-2 mb-3"> 
+ <div class="col">
+   <div class="form-group">
+     <label class="form-label" for="deck_name">Name of Deck</label>
+     <input class="form-control" 
+            type="text" 
+            name="deck_name" 
+            id="deck_name" 
+            value="{{deck_info[0][1]}}" required>
+   </div>
+ </div>
+ <div class="col">
+   <div class="form-group" >
+     <label class="form-label" for="year_released">Year Released</label>
+     <input class="form-control" type="number" min="1901" max="2155" 
+            name="year_released" id="year_released" value="{{deck_info[0][4]}}" 
+            required>
+   </div>
+ </div>
+</div>
+<div class="row mb-3">
+   <div class="col">
+     <div class="form-group">
+       <label class="form-label" for="designer">Designer</label>
+       <input class="form-control" type="text" name="designer" id="designer" 
+              value="{{deck_info[0][2]}}" required>
+     </div>
+   </div>
+   <div class="col">
+     <div class="form-group">
+       <label class="form-label" for="manufacturer_list">Manufacturer</label>
+       <select class="form-select" required name="manufacturer_list" 
+               id="manufacturer_list" onchange='CheckManufacturer(this.value);'>
+         {% set list_of_man = 
+          ['Cartamundi', 'LPCC', 'KSPCC', 'EPCC', 'USPCC', 'TWPCC', 'WJPC', 
+           'NPCC', 'Unknown'] %}
+         {% if deck_info[0][3] not in list_of_man %}
+         <option selected value='{{deck_info[0][3]}}'>{{deck_info[0][3]}}</option>
+         {% endif %}
+
+         {% for item in list_of_man %}
+            {% if deck_info[0][3] == item %}
+              <option selected value="{{item}}">{{item}}</option>
+            {% else %}
+              <option  value="{{item}}">{{item}}</option>
+            {% endif %}
+         {% endfor %}
+
+         <option value="other">Other</option>
+       </select>
+       <input class="form-control mt-2" type="text" name="manufacturer" 
+              id="manufacturer" style='display:none;' />
+     </div>
+   </div>
+ 
+</div> 
+
+
+<div class="form-group mb-3">
+ <label class="form-label" for="deck_image">Deck Image</label> 
+ <input class="form-control" type="file" accept=".jpg,.jpeg,.png" 
+        name="deck_image" id="deck_image" aria-describedby="imageNote">
+ <div id="imageNote" 
+      class="form-text">
+      Only upload an image if you want to replace the existing one.
+</div>
+</div>
+
+
+<div class="text-center">
+  <a href="{{url_for('collection_display')}}">
+    <button class="btn btn-secondary me-4">Back</button>
+  </a>
+   
+ <button 
+ class="btn btn-primary" 
+ type="submit" 
+ value="Update">Update
+</button>
+</div>
+
+</form>
+</div>
+{% endblock %}
