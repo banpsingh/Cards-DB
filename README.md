@@ -41,7 +41,7 @@ To run Cards-DB, you will need to have the following software installed on your 
 
 ## Usage
 
-To run Cards-DB, activate the virtual environment by running `source venv/bin/activate` in your terminal, then start the app by running `python app.py`. You can then access the app by visiting `http://localhost:499` in your web browser.
+To run Cards-DB, activate the virtual environment by running `source venv/bin/activate` in your terminal, then start the app by running `python app.py`. You can then access the app by visiting `http://localhost:4999` in your web browser.
 
 Images uploaded to the database will be stored in `static/images`. The images in this repo are there as examples and will not display in your clone because they will not be associated to any entry in your database until you upload your own images.
 
