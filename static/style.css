@@ -1,20 +1,29 @@
-/* 
 table {
-  width:75%;
-  margin-left:auto; 
-  margin-right:auto;
+  width: 100%;
   border: 3px solid;
-  border-collapse: collapse;
+  text-align: center;
+  vertical-align: middle;
+}
+
+thead {
+  font-size: 28px;
+  border: 3px solid;
+  border-color: black;
+  background-color: black;
+  color: white;
 }
 
 td {
-  border: 3px solid;
+  border: 1px solid;
   text-align: center;
+  font-size: 20px;
 }
 
-th {
-  border: 3px solid;
-} */
+
+tbody tr:nth-child(odd) {
+  background-color: #f4d3c7;
+}
+tbody tr:hover {background-color: coral;}
 
 .c-item {
   height:480px;

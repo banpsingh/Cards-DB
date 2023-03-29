@@ -2,10 +2,14 @@
 
 {% block content %}
 <div class="container py-5">
+  <div class="row mb-4">
+    <div class="col-11">
   <input type="text" id="myInput" onkeyup="search()" 
          placeholder="Search for deck..">
+    </div>
+   <div class="col-1"> 
   <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle mb-2" type="button" 
+    <button class="btn btn-secondary dropdown-toggle mt-2" type="button" 
             data-bs-toggle="dropdown" aria-expanded="false">
       Sort By
     </button>
@@ -22,15 +26,17 @@
                   Year Relased: New to Old</button></li>
     </ul>
   </div>
-  <table id="myTable" class="table table-bordered border-dark"> 
+</div>
+  </div>
+  <table id="myTable"> 
     <thead>
       <tr>
-        <th style="width:20%">Image</th>
-        <th>Deck</th>
-        <th>Designer</th>
-        <th>Manufacturer</th>
-        <th>Year Released</th>
-        <th>Modify</th>
+        <th style="width:12%">Image</th>
+        <th style="width:30%">Deck</th>
+        <th style="width:20%">Designer</th>
+        <th style="width:18%">Manufacturer</th>
+        <th style="width:12%;">Year Released</th>
+        <th style="width:8%">Modify</th>
       </tr>
     </thead>
     <tbody>
